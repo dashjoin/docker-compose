@@ -1,0 +1,91 @@
+name: dashjoin
+
+services:
+
+  dashjoin:
+    image: ghcr.io/dashjoin/platform-build:6.2.49
+    environment:
+      DJ_ADMIN_PASS: ${DJ_ADMIN_PASS}
+      DASHJOIN_HOME: /mnt/dashjoin/app
+      DASHJOIN_APPURL: ${DASHJOIN_APPURL}
+      DASHJOIN_APPURL_BRANCH: ${DASHJOIN_APPURL_BRANCH}
+      DASHJOIN_DATABASE_POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes: 
+      - type: bind
+        source: ./volumes/dashjoin/
+        target: /mnt/dashjoin
+    ports:
+      - 8080:8080
+      - 8081:8081
+    depends_on:
+      - postgres
+      - aia
+
+  aia:
+    image: ghcr.io/dashjoin/aia-build:1.0.116
+    environment:
+      MCP_BUILTIN_URL: http://mcp-proxy:9090
+      MCP_BUILTIN_AUTH: ${MCP_BUILTIN_AUTH}
+      DASHJOIN_DEVMODE: 0
+      JUPYTER_TOKEN: ${DJ_ADMIN_PASS}
+      DASHJOIN_APPURL: ${DASHJOIN_AI_APPURL}
+      DASHJOIN_APPURL_BRANCH: ${DASHJOIN_AI_APPURL_BRANCH}
+      DJAI_POSTGRES_USER: postgres
+      DJAI_POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      DJAI_UI_AUTH_PASS: ${DJ_ADMIN_PASS}
+      
+      FIREWORKS_API_KEY: ${FIREWORKS_API_KEY} 
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      MISTRAL_API_KEY: ${MISTRAL_API_KEY} 
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+
+      DOCKER_MCP_GATEWAY_URL: http://host.docker.internal:8811
+      MCP_GATEWAY_AUTH_TOKEN: ${MCP_GATEWAY_AUTH_TOKEN}
+
+    volumes: 
+      - type: bind
+        source: ./config-docker/
+        target: /app/config
+        read_only: true
+      - type: bind
+        source: ./volumes/aia/
+        target: /app/dashjoin/data
+    ports:
+      - 8001:8001
+      - 8002:8080
+      - 8501:8501
+    depends_on:
+      - postgres
+      - mcp-proxy
+
+  mcp-proxy:
+    image: local/mcp-proxy
+    build:
+      context: .
+      dockerfile: mcp-proxy.Dockerfile
+
+    volumes: 
+      - type: bind
+        source: ./config-docker/mcp-proxy-config.json
+        target: /mcp/config/mcp-proxy-config.json
+      # Make Dashjoin upload folder visible to MCP filesystem tools
+      # Note: cannot link to app/upload as this creates empty folder, which prevents git clone in first run!
+      - type: bind
+        source: ./volumes/dashjoin/app/
+        target: /data
+
+    command: --config /mcp/config/mcp-proxy-config.json
+
+    ports:
+      - 9090:9090
+
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes: 
+      - type: bind
+        source: ./volumes/postgres/
+        target: /var/lib/postgresql/data
+    ports:
+      - 5432:5432

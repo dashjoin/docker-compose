@@ -1,0 +1,132 @@
+{
+  "mcpProxy": {
+    "baseURL": "http://localhost",
+    "addr": ":9090",
+    "name": "MCP Proxy",
+    "version": "1.0.0",
+    "type": "streamable-http",
+    "options": {
+      "panicIfInvalid": false,
+      "logEnabled": true,
+      "authTokens": [
+        "djdjdj"
+      ]
+    }
+  },
+  "mcpServers": {
+    "fetch": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-fetch"
+      ]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/data"
+      ],
+      "options": {
+        "toolFilter": {
+          "mode": "allow",
+          "list": [
+            "read_file",
+            "read_multiple_files",
+            "list_directory",
+            "list_allowed_directories",
+            "directory_tree",
+            "search_files",
+            "get_file_info"
+          ]
+        }
+      }
+    },
+    "filesystemwrite": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/data"
+      ],
+      "options": {
+        "toolFilter": {
+          "mode": "allow",
+          "list": [
+            "read_file",
+            "write_file",
+            "read_multiple_files",
+            "list_directory",
+            "create_directory",
+            "list_allowed_directories",
+            "directory_tree",
+            "search_files",
+            "get_file_info"
+          ]
+        }
+      }
+    },
+    "memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ]
+    },
+    "time": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-time"
+      ]
+    },
+    "calculator": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-calculator"
+      ]
+    },
+    "wikipedia": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "wikipedia-mcp"
+      ]
+    },
+    "websearch-duckduckgo": {
+      "command": "uvx",
+      "args": [
+        "duckduckgo-mcp-server"
+      ]
+    },
+    "excel": {
+      "command": "uvx",
+      "args": [
+        "excel-mcp-server",
+        "stdio"
+      ],
+      "env": {
+        "EXCEL_FILES_PATH": "/data"
+      },
+      "options": {
+        "toolFilter": {
+          "mode": "allow",
+          "list": [
+            "read_data_from_excel",
+            "write_data_to_excel",
+            "insert_rows",
+            "insert_columns"
+          ]
+        }
+      }
+    },
+    "ms365": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@softeria/ms-365-mcp-server",
+        "--org-mode",
+        "--read-only"
+      ]
+    }
+  }
+}
