@@ -12,8 +12,8 @@ Dashjoin can be run in the following configuration
 First, clone the GitHub repository to get access to the environment:
 
 ```
-git clone https://github.com/dashjoin/platform
-cd platform/docker-compose
+git clone https://github.com/dashjoin/docker-compose
+cd docker-compose
 ```
 
 ## Configuring your Settings
