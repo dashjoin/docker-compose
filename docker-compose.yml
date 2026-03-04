@@ -3,7 +3,7 @@ name: dashjoin
 services:
 
   dashjoin:
-    image: ghcr.io/dashjoin/platform-build:6.2.49
+    image: ghcr.io/dashjoin/platform-build:7.0.1
     environment:
       DJ_ADMIN_PASS: ${DJ_ADMIN_PASS}
       DASHJOIN_HOME: /mnt/dashjoin/app
