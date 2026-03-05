@@ -8,7 +8,6 @@ services:
       DJ_ADMIN_PASS: ${DJ_ADMIN_PASS}
       DASHJOIN_HOME: /mnt/dashjoin/app
       DASHJOIN_APPURL: ${DASHJOIN_APPURL}
-      DASHJOIN_APPURL_BRANCH: ${DASHJOIN_APPURL_BRANCH}
       DASHJOIN_DATABASE_POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       GOOGLE_CLOUD_PROJECT: ${GOOGLE_CLOUD_PROJECT}
     volumes: 
@@ -62,6 +61,8 @@ services:
 
   mcp-proxy:
     image: local/mcp-proxy
+    environment:
+      MCP_AUTH_TOKEN: ${MCP_AUTH_TOKEN}    
     build:
       context: .
       dockerfile: mcp-proxy.Dockerfile

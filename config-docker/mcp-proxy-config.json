@@ -9,7 +9,7 @@
       "panicIfInvalid": false,
       "logEnabled": true,
       "authTokens": [
-        "djdjdj"
+        "${MCP_AUTH_TOKEN}"
       ]
     }
   },
@@ -119,14 +119,14 @@
         }
       }
     },
-    "ms365": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@softeria/ms-365-mcp-server",
-        "--org-mode",
-        "--read-only"
-      ]
-    }
+	"ms365": {
+	  "command": "npx",
+	  "args": [
+	    "-y",
+	    "@softeria/ms-365-mcp-server",
+	    "--org-mode",
+	    "--read-only"
+	  ]
+	}
   }
 }
