@@ -3,7 +3,7 @@ name: dashjoin
 services:
 
   dashjoin:
-    image: ghcr.io/dashjoin/platform-build:7.0.1
+    image: dashjoin/platform
     environment:
       DJ_ADMIN_PASS: ${DJ_ADMIN_PASS}
       DASHJOIN_HOME: /mnt/dashjoin/app
@@ -22,7 +22,7 @@ services:
       - aia
 
   aia:
-    image: ghcr.io/dashjoin/aia-build:1.0.116
+    image: dashjoin/aia
     environment:
       MCP_BUILTIN_URL: http://mcp-proxy:9090
       MCP_BUILTIN_AUTH: ${MCP_BUILTIN_AUTH}
