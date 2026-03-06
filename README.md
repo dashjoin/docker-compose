@@ -21,6 +21,12 @@ cd docker-compose
 ## Configuring your Settings
 
 If you are running ollama (http://host.docker.internal:11434) locally, you are good to go.
+To use RAG, make sure the embedding model is available:
+
+```
+ollama pull nomic-embed-text
+```
+
 If you want to use an external AI service, please enter your API key in the .env file.
 
 The files mcp-proxy-config.json and settings.yml contain the default setup for your AI models and MCP servers.
