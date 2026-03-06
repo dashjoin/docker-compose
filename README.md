@@ -49,6 +49,9 @@ docker compose stop
 docker compose down
 ```
 
+If you are using Windows, the postgres database might not start due to the mounted volume.
+Please use a named volume in this case.
+
 ## Volumes
 
 In your working directory, you will find a folder called "volumes". It contains the persistent volumes for the dashjoin, aia, and postgres containers.
