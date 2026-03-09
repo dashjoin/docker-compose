@@ -1,6 +1,6 @@
-# Launching Dashjoin using Docker Compose
+# Build Local AI Apps with a few Clicks
 
-Allows building AI Apps with a few clicks. The features include:
+The features include:
 
 * Local install supporting ollama
 * Multimodal chat
