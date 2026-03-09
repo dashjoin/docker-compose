@@ -21,7 +21,7 @@ Dashjoin can be run in the following configuration
 * MCP-Proxy: Allows installing MCP tools to be used by AIA
 * Postgres: the database for both platform and AIA
 
-## Cloning the Environment
+## Getting Started
 
 First, clone the GitHub repository to get access to the environment:
 
