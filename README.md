@@ -1,13 +1,25 @@
 # Launching Dashjoin using Docker Compose
 
+Allows building AI Apps with a few clicks. The features include:
+
+* Local install supporting ollama
+* Multimodal chat
+* Retrieval Augmented Generation (incl. automated doc import)
+* MCP tool support (web search, file access, O365)
+* Custom tools implemented using the Dasjoin Platform and JSONata
+
+Please check out this tutorial:
+
+<a href="https://www.youtube.com/watch?v=MvhzcPOY3HM"><img src="https://img.youtube.com/vi/MvhzcPOY3HM/mqdefault.jpg"></a>
+
+## Containers
+
 Dashjoin can be run in the following configuration
 
-* Platform: the main Dashjoin Platform
+* [Platform](https://github.com/dashjoin/platform): the main Dashjoin Low Code Platform
 * AIA: the AI backend
 * MCP-Proxy: Allows installing MCP tools to be used by AIA
 * Postgres: the database for both platform and AIA
-
-Please check out this [tutorial](https://www.youtube.com/watch?v=MvhzcPOY3HM) as well.
 
 ## Cloning the Environment
 
