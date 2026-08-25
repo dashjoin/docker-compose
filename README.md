@@ -61,11 +61,25 @@ docker compose stop
 docker compose down
 ```
 
+Point your browser to [http://localhost:8080/](http://localhost:8080/) and login with admin:djdjdj. Then navigate to
+[http://localhost:8080/#/config/dj-function](http://localhost:8080/#/config/dj-function) to explore the functionalities.
+
 ## Volumes
 
 In your working directory, you will find a folder called "volumes". It contains the persistent volumes for the dashjoin and aia containers. The named volume "postgres" is used for the postgres database container (docker volume ls).
 
 Note that the data is retained even after "docker compose down" is run. 
+
+## Open Knowledge Format
+
+AI Assistant supports the Open Knowledge Format (OKF). It is an open, vendor-neutral standard to formalize how metadata, context, 
+and curated knowledge are structured for AI agents and humans. To run the OKF samples, clone this CRM knowledge base into
+the platform's upload folder:
+
+```
+cd volumes/dashjoin/app/upload
+git clone https://github.com/jacquescorbytuech/crm-open-knowledge-wiki
+```
 
 ## Docker MCP
 
