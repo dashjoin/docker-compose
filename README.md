@@ -93,5 +93,5 @@ docker mcp gateway run --transport=http
 
 ## License
 
-This software is licensed under the [PolyForm Free Trial License 1.0.0](https://polyformproject.org/licenses/free-trial/1.0.0/).
+This software is licensed under the [PolyForm Free Trial License 1.0.0](https://polyformproject.org/licenses/free-trial/1.0.0).
 Please [contact us](https://dashjoin.com/#contact) to obtain an enterprise license.
