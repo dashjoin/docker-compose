@@ -3,7 +3,7 @@ name: dashjoin
 services:
 
   dashjoin:
-    image: dashjoin/platform:7.1.1
+    image: dashjoin/platform:7.2.1
     environment:
       DJ_ADMIN_PASS: ${DJ_ADMIN_PASS}
       DASHJOIN_HOME: /mnt/dashjoin/app
